@@ -20,7 +20,7 @@ public class ContactUsSteps {
 
     @Given("^Navigate to the website$")
     public void navigate_to_the_website() {
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("http://automationpractice.com/index.php ");
     }
     @When("^I use legit username and password$")

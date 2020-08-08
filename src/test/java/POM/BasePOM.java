@@ -18,7 +18,12 @@ public class BasePOM {
     }
     public void waitAndClick(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         driver.findElement(locator).click();
+    }
+    public void waitAndClick(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        element.click();
     }
     public void waitAndSendKeys(By locator, String text) {
         WebElement webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -29,4 +34,5 @@ public class BasePOM {
         WebElement webElement=wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         Assert.assertTrue(driver.findElement(locator).getText().contains(str));
     }
+
 }
