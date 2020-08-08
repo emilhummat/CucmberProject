@@ -57,11 +57,14 @@ public class ContactUsSteps {
         select3.selectByIndex(1);
         contact.waitAndSendKeys(By.id("message"),"sfs");
         contact.waitAndClick(By.id("submitMessage"));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-success")));
-        String expected="Your message has been successfully sent to our team.";
-        String actual = driver.findElement(By.cssSelector(".alert.alert-success")).getText();
-        Assert.assertEquals(expected,actual);
-        contact.waitAndClick(By.cssSelector("a[title='Log me out']"));
+       
     }
 
+    @Then("^\"([^\"]*)\" has been successfully \"([^\"]*)\" to our team\\.$")
+    public void hasBeenSuccessfullyToOurTeam(String arg0, String arg1){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-success")));
+        String actual = driver.findElement(By.cssSelector(".alert.alert-success")).getText();
+        Assert.assertEquals(actual, arg0 + " has been successfully " + arg1+" to our team.");
+        contact.waitAndClick(By.cssSelector("a[title='Log me out']"));
+    }
 }

@@ -6,9 +6,10 @@ Feature:Contact us feature
     Then I am logged in
     Given Navigate to Contact us
     When Fill out the message box "<Subject Heading>", "<Order reference>", and "Product"
+    Then "<entityName>" has been successfully "<outcome>" to our team.
 
     Examples:
-      | Subject Heading  | Order reference |
-      | Customer service | 225343          |
-      | Webmaster        | 225362          |
-      | Webmaster        | 225364          |
+      | Subject Heading  | Order reference |  entityName  | outcome |
+      | Customer service | 225343          | Your message | sent    |
+      | Webmaster        | 225362          | Your message | sent    |
+      | Webmaster        | 225364          | Your message | sent    |
