@@ -1,13 +1,10 @@
 package steps;
 
 import POM.ContactUsPOM;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.eo.Se;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -57,7 +54,7 @@ public class ContactUsSteps {
         select3.selectByIndex(1);
         contact.waitAndSendKeys(By.id("message"),"sfs");
         contact.waitAndClick(By.id("submitMessage"));
-       
+
     }
 
     @Then("^\"([^\"]*)\" has been successfully \"([^\"]*)\" to our team\\.$")
@@ -67,4 +64,6 @@ public class ContactUsSteps {
         Assert.assertEquals(actual, arg0 + " has been successfully " + arg1+" to our team.");
         contact.waitAndClick(By.cssSelector("a[title='Log me out']"));
     }
+
+
 }
