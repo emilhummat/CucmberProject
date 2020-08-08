@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.BaseDriver;
 
 public class ContactUsSteps {
@@ -51,10 +52,16 @@ public class ContactUsSteps {
         WebElement id_order = driver.findElement(By.name("id_order"));
         Select select2=new Select(id_order);
         select2.selectByValue(arg1);
-        WebElement product = driver.findElement(By.id("225343_order_products"));
+        WebElement product = driver.findElement(By.cssSelector("select[style='display: inline-block;']"));
         Select select3=new Select(product);
-        select3.selectByIndex(Integer.parseInt(arg2));
+        select3.selectByIndex(1);
+        contact.waitAndSendKeys(By.id("message"),"sfs");
+        contact.waitAndClick(By.id("submitMessage"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-success")));
+        String expected="Your message has been successfully sent to our team.";
+        String actual = driver.findElement(By.cssSelector(".alert.alert-success")).getText();
+        Assert.assertEquals(expected,actual);
         contact.waitAndClick(By.cssSelector("a[title='Log me out']"));
-//        contact.waitAndClick(By.id("submitMessage"));
     }
+
 }
