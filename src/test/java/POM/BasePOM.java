@@ -30,9 +30,5 @@ public class BasePOM {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);
     }
-    public void waitAndConfirm(By locator, String str){
-        WebElement webElement=wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        Assert.assertTrue(driver.findElement(locator).getText().contains(str));
-    }
 
 }

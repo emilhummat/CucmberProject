@@ -43,7 +43,7 @@ public class ContactUsSteps {
     }
 
     @When("^Fill out the message box \"([^\"]*)\", \"([^\"]*)\", and \"([^\"]*)\"$")
-    public void fillOutTheMessageBoxAnd(String arg0, String arg1, String arg2) throws InterruptedException {
+    public void fillOutTheMessageBoxAnd(String arg0, String arg1, String arg2) {
         Select select1=new Select(driver.findElement(By.id("id_contact")));
         select1.selectByVisibleText(arg0);
         WebElement id_order = driver.findElement(By.name("id_order"));
